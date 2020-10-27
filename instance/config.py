@@ -1,1 +1,1 @@
-SECRET_KEY = 'Piecekeep'
+SECRET_KEY = ''
