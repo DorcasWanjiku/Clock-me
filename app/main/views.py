@@ -79,7 +79,7 @@ def update_pic(name):
         db.session.commit()
     return redirect(url_for('main.profile',name=name))
 
-@main.route('/like/<int:id>',methods = ['POST','GET')
+@main.route('/like/<int:id>',methods = ['POST','GET'])
 @login_required
 def like(id):
     get_pitches = Upvote.get_upvotes(id)
