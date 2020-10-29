@@ -18,12 +18,12 @@ def index():
 def new_pitch():
     form = PitchForm()
     if form.validate_on_submit():
-        title = form.title.data
+        
         post = form.post.data
         category = form.category.data
         user_id = current_user
-        new_pitch_object = Pitch(post=post,user_id=current_user._get_current_object().id,category=category,title=title)
-        new_pitch_object.save_p()
+        new_pitch_object = Pitch(pitch_content=post,user_id=current_user._get_current_object().id,category=category)
+        new_pitch_object.save_pitch()
         return redirect(url_for('main.index'))
         
     return render_template('create_pitch.html', form = form)
@@ -41,7 +41,7 @@ def comment(pitch_id):
         new_comment = Comment(comment = comment,user_id = user_id,pitch_id = pitch_id)
         new_comment.save_c()
         return redirect(url_for('.comment', pitch_id = pitch_id))
-    return render_template('comment.html', form =form, pitch = pitch,all_comments=all_comments)
+    return render_template('comment.html', form =form, pitch = pitch,all_comments=source)
 
 
 @main.route('/user/<name>')
@@ -79,7 +79,7 @@ def update_pic(name):
         db.session.commit()
     return redirect(url_for('main.profile',name=name))
 
-@main.route('/like/<int:id>',methods = ['POST','GET'])
+@main.route('/like/<int:id>',methods = ['POST','GET')
 @login_required
 def like(id):
     get_pitches = Upvote.get_upvotes(id)
