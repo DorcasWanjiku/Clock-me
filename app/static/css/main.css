@@ -5,13 +5,13 @@ body {
     padding: 0;
    
     z-index: 1;
-    background: linear-gradient(to bottom right, #230e4a, black);
+    background: linear-gradient(to bottom right, #ffffff, black);
 }
-
+/* 
 #particles-js {
     height: auto;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
     z-index: 1;
-}
+} */
